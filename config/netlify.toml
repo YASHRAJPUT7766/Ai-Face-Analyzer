@@ -1,0 +1,21 @@
+[build]
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# API route redirects so /api/... works cleanly
+[[redirects]]
+  from = "/api/create-order"
+  to   = "/.netlify/functions/create-order"
+  status = 200
+
+[[redirects]]
+  from = "/api/verify-payment"
+  to   = "/.netlify/functions/verify-payment"
+  status = 200
+
+[[redirects]]
+  from = "/api/check-pro"
+  to   = "/.netlify/functions/check-pro"
+  status = 200

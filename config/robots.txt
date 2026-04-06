@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aifaceanalyzer.netlify.app/sitemap.xml
