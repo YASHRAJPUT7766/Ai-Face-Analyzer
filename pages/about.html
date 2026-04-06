@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us – AI Face Analyzer | Tynixor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AiFace">
+  <link rel="apple-touch-icon" href="/icon-192.png">
+  <meta name="description" content="Learn about AI Face Analyzer — a free AI-powered entertainment platform by Tynixor. Personality analysis, beauty scoring, age detection, and more.">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Poppins',sans-serif;background:#0f0f1a;color:#cbd5e1;min-height:100vh;padding-bottom:60px}
+    .abt-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;background:rgba(20,12,50,0.96);border-bottom:1px solid rgba(139,92,246,0.15);position:sticky;top:0;z-index:99}
+    .abt-nav .logo{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+    .abt-nav a.back{font-size:13px;color:#a78bfa;text-decoration:none;display:flex;align-items:center;gap:5px;font-weight:600}
+    .abt-hero{text-align:center;padding:60px 24px 40px}
+    .hero-badge{display:inline-block;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:50px;padding:6px 18px;font-size:12px;font-weight:600;color:#a78bfa;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+    .abt-hero h1{font-family:'Syne',sans-serif;font-size:clamp(28px,6vw,46px);font-weight:900;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;margin-bottom:16px}
+    .abt-hero p{font-size:15px;color:#94a3b8;max-width:520px;margin:0 auto;line-height:1.75}
+    .abt-wrap{max-width:780px;margin:0 auto;padding:0 20px}
+    .abt-card{background:rgba(139,92,246,0.07);border:1px solid rgba(139,92,246,0.15);border-radius:20px;padding:32px 28px;margin-bottom:24px}
+    .abt-card h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#a78bfa;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+    .abt-card p{font-size:14px;line-height:1.8;color:#94a3b8;margin-bottom:10px}
+    .abt-card p:last-child{margin-bottom:0}
+    .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:12px}
+    .feat-item{background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.2);border-radius:14px;padding:18px 16px;text-align:center}
+    .feat-icon{font-size:28px;margin-bottom:8px}
+    .feat-name{font-size:13px;font-weight:600;color:#e2e8f0}
+    .feat-desc{font-size:11px;color:#64748b;margin-top:4px}
+    .stats-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+    .stat-box{flex:1;min-width:110px;background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.2);border-radius:16px;padding:20px 16px;text-align:center}
+    .stat-num{font-family:'Syne',sans-serif;font-size:26px;font-weight:900;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .stat-label{font-size:11px;color:#64748b;margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
+    .val-list{list-style:none;padding:0}
+    .val-list li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px;color:#94a3b8;line-height:1.6}
+    .val-list li:last-child{border-bottom:none}
+    .val-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+    .val-list li strong{color:#e2e8f0;display:block;font-size:14px}
+    .abt-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+    .abt-link{padding:10px 20px;border-radius:50px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.2s}
+    .abt-link.primary{background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff}
+    .abt-link.secondary{background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:#a78bfa}
+    .abt-link:hover{opacity:0.85;transform:translateY(-1px)}
+    .team-note{background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.2);border-radius:14px;padding:18px 20px;font-size:13px;color:#6ee7b7;line-height:1.7;margin-top:12px}
+  </style>
+</head>
+<body>
+
+<nav class="abt-nav">
+  <a href="/index.html" class="logo">🔮 AI Face Analyzer</a>
+  <a href="javascript:history.back()" class="back">← Back</a>
+</nav>
+
+<div class="abt-hero">
+  <div class="hero-badge">✨ About Us</div>
+  <h1>Built for Curiosity,<br>Powered by AI</h1>
+  <p>AI Face Analyzer is a free, fun platform where AI meets self-discovery — explore your personality, beauty score, emotions, and more from a single photo.</p>
+</div>
+
+<div class="abt-wrap">
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num">15+</div><div class="stat-label">AI Tools</div></div>
+    <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">Free to Use</div></div>
+    <div class="stat-box"><div class="stat-num">0</div><div class="stat-label">Photos Uploaded</div></div>
+    <div class="stat-box"><div class="stat-num">2025</div><div class="stat-label">Founded</div></div>
+  </div>
+
+  <div class="abt-card">
+    <h2>🧠 What is AI Face Analyzer?</h2>
+    <p>AI Face Analyzer is a free web application by <strong style="color:#a78bfa">Tynixor</strong> that uses advanced AI and real face recognition technology to deliver engaging personality readings, beauty scoring, age detection, face symmetry analysis, future predictions, and much more.</p>
+    <p>All AI processing runs <strong style="color:#e2e8f0">directly inside your browser</strong>. Your photos are never sent to any server — they stay 100% on your device. We built this platform with privacy as a non-negotiable foundation.</p>
+  </div>
+
+  <div class="abt-card">
+    <h2>🎯 Our AI Tools</h2>
+    <div class="feat-grid">
+      <div class="feat-item"><div class="feat-icon">🧬</div><div class="feat-name">Personality Analysis</div><div class="feat-desc">Traits from your face</div></div>
+      <div class="feat-item"><div class="feat-icon">✨</div><div class="feat-name">Beauty Score</div><div class="feat-desc">Attractiveness rating</div></div>
+      <div class="feat-item"><div class="feat-icon">🎂</div><div class="feat-name">Age Detector</div><div class="feat-desc">AI age prediction</div></div>
+      <div class="feat-item"><div class="feat-icon">😊</div><div class="feat-name">Mood Scanner</div><div class="feat-desc">Emotion detection</div></div>
+      <div class="feat-item"><div class="feat-icon">⚖️</div><div class="feat-name">Face Symmetry</div><div class="feat-desc">Golden ratio test</div></div>
+      <div class="feat-item"><div class="feat-icon">🔮</div><div class="feat-name">Face Future</div><div class="feat-desc">Predictions & luck</div></div>
+      <div class="feat-item"><div class="feat-icon">👥</div><div class="feat-name">Face Compare</div><div class="feat-desc">Compatibility test</div></div>
+      <div class="feat-item"><div class="feat-icon">🎰</div><div class="feat-name">Daily Spin</div><div class="feat-desc">Win free credits</div></div>
+    </div>
+  </div>
+
+  <div class="abt-card">
+    <h2>💜 Our Values</h2>
+    <ul class="val-list">
+      <li><span class="val-icon">🔒</span><div><strong>Privacy First</strong>All face analysis runs locally in your browser. No photo ever leaves your device — zero uploads, zero storage of biometric data.</div></li>
+      <li><span class="val-icon">🆓</span><div><strong>Free Forever</strong>Our core tools are and will always remain 100% free. We believe good AI should be accessible to everyone.</div></li>
+      <li><span class="val-icon">🚀</span><div><strong>Constant Innovation</strong>We continuously update our AI models, add new tools, and improve accuracy based on real user feedback.</div></li>
+      <li><span class="val-icon">🎮</span><div><strong>Fun & Engaging</strong>Designed for entertainment — with streaks, credits, leaderboards, and daily challenges to keep things exciting.</div></li>
+      <li><span class="val-icon">🌍</span><div><strong>Inclusive & Accessible</strong>Built for users worldwide with multilingual support and a mobile-first design that works on any device.</div></li>
+    </ul>
+  </div>
+
+  <div class="abt-card">
+    <h2>⚠️ Entertainment Only</h2>
+    <p>AI Face Analyzer is designed purely for <strong style="color:#e2e8f0">fun and entertainment</strong>. Our personality readings, beauty scores, predictions, and all other results are AI-generated simulations and are <strong style="color:#e2e8f0">not scientifically accurate</strong> or medically validated.</p>
+    <p>Please do not rely on these results for any real-world decisions. Read our full <a href="/disclaimer.html" style="color:#a78bfa">Disclaimer</a> for more details.</p>
+  </div>
+
+  <div class="abt-card">
+    <h2>👨‍💻 Who Made This?</h2>
+    <p>AI Face Analyzer is a project by <strong style="color:#a78bfa">Tynixor</strong> — an independent software studio passionate about making AI tools that are accessible, private, and actually fun to use.</p>
+    <div class="team-note">
+      🛠️ We are a small, dedicated team of developers and designers who believe exploring AI shouldn't require a paid subscription. We experiment, iterate, and love hearing from our users.
+    </div>
+  </div>
+
+  <div class="abt-card">
+    <h2>📬 Get in Touch</h2>
+    <p>Have feedback, suggestions, or a bug to report? We read every message and genuinely appreciate your input. You can also reach us for business or partnership inquiries.</p>
+    <div class="abt-links">
+      <a href="/contact.html" class="abt-link primary">✉️ Contact Us</a>
+      <a href="/privacy.html" class="abt-link secondary">🔒 Privacy Policy</a>
+      <a href="/refund.html" class="abt-link secondary">💸 Refund Policy</a>
+      <a href="/terms.html" class="abt-link secondary">📄 Terms of Service</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="collect.js"></script>
+<script src="profile-onboarding.js"></script>
+
+<script src="plan-system.js"></script>
+<script src="pro-manager.js"></script>
+  <script src="pro-upsell.js"></script>
+</body>
+</html>

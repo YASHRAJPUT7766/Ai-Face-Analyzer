@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Plans & Pricing — AI Face Analyzer</title>
+  <meta name="description" content="Unlock full AI face analysis. Basic 3-day boost or Pro 1-month unlimited. 99% OFF limited time — grab before price goes up!">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+    :root{
+      --purple:#7c3aed;--purple2:#6d28d9;--pink:#ec4899;
+      --gold:#f59e0b;--green:#16a34a;--red:#ef4444;
+      --ink:#111827;--muted:#6b7280;--border:#e5e7eb;
+      --bg:#f9fafb;--white:#fff;--orange:#ea580c;
+    }
+    body{font-family:-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;padding-bottom:80px}
+
+    /* ── HEADER ── */
+    .pg-header{background:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 12px rgba(0,0,0,0.07);position:sticky;top:0;z-index:100}
+    .pg-back{width:36px;height:36px;border-radius:50%;background:#f3f4f6;border:none;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s}
+    .pg-back:hover{background:#e5e7eb}
+    .pg-header-title{font-size:17px;font-weight:800;color:var(--ink)}
+    .pg-header-sub{font-size:11px;color:var(--muted);margin-top:1px}
+
+    /* ── SCARCITY TOP BAR ── */
+    .scarcity-top{background:linear-gradient(135deg,#dc2626,#ea580c);padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+    .scarcity-top-txt{font-size:12px;font-weight:800;color:#fff;text-align:center}
+    .scarcity-top-txt span{background:rgba(255,255,255,0.25);padding:2px 8px;border-radius:20px;margin:0 3px;font-size:13px}
+
+    /* ── HERO ── */
+    .hero{background:linear-gradient(135deg,#1e0a3c,#3b0764,#7c3aed);padding:22px 20px 24px;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(236,72,153,.3) 0%,transparent 55%)}
+    .hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:700;color:#fff;margin-bottom:12px;position:relative;z-index:1}
+    .hero-dot{width:6px;height:6px;background:#22c55e;border-radius:50%;animation:heroDot 1.4s ease-in-out infinite}
+    @keyframes heroDot{0%,100%{opacity:1}50%{opacity:.25}}
+    .hero-title{font-size:24px;font-weight:900;color:#fff;line-height:1.25;margin-bottom:6px;position:relative;z-index:1}
+    .hero-title span{color:#fbbf24}
+    .hero-sub{font-size:13px;color:rgba(255,255,255,.8);position:relative;z-index:1;line-height:1.6;max-width:300px;margin:0 auto}
+
+    /* ── MAIN SCARCITY ALERT ── */
+    .scarcity-alert{margin:14px 16px 0;background:#fff;border:2px solid var(--red);border-radius:16px;overflow:hidden}
+    .scarcity-alert-head{background:linear-gradient(135deg,#fef2f2,#ffe4e4);padding:12px 16px;display:flex;align-items:center;gap:10px}
+    .scarcity-fire{font-size:22px;animation:fireShake 0.4s ease-in-out infinite alternate}
+    @keyframes fireShake{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+    .scarcity-alert-txt{flex:1}
+    .scarcity-alert-main{font-size:13px;font-weight:800;color:#991b1b}
+    .scarcity-alert-sub{font-size:11px;color:#b91c1c;margin-top:2px}
+    .slots-badge{background:var(--red);color:#fff;font-size:14px;font-weight:900;padding:6px 12px;border-radius:10px;min-width:60px;text-align:center;flex-shrink:0}
+    .slots-badge-lbl{font-size:9px;font-weight:700;opacity:.9}
+    .slots-badge-num{font-size:20px;font-weight:900;line-height:1}
+    .scarcity-bar-wrap{padding:10px 16px 14px;background:#fef2f2}
+    .scarcity-bar-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;margin-bottom:5px}
+    .scarcity-bar-label .taken{color:var(--red)}
+    .scarcity-bar-label .left{color:var(--green)}
+    .scarcity-bar-bg{height:8px;background:#fee2e2;border-radius:4px;overflow:hidden}
+    .scarcity-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),#fbbf24,var(--red));border-radius:4px;transition:width 1s ease}
+    .scarcity-price-warn{background:#fffbeb;border-top:1px solid #fef08a;padding:9px 16px;font-size:11.5px;color:#92400e;font-weight:700;text-align:center}
+    .scarcity-price-warn span{color:var(--red);font-size:13px}
+
+    /* ── TIMER ── */
+    .timer-bar{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:9px 16px;margin:12px 16px 0;display:flex;align-items:center;justify-content:space-between;gap:8px}
+    .timer-left{display:flex;align-items:center;gap:7px}
+    .timer-dot{width:7px;height:7px;border-radius:50%;background:#ef4444;animation:heroDot 1.2s ease-in-out infinite;flex-shrink:0}
+    .timer-txt{font-size:12px;color:#ef4444;font-weight:700}
+    .timer-count-wrap{display:flex;gap:5px;align-items:center}
+    .timer-unit{background:var(--red);color:#fff;border-radius:7px;padding:4px 8px;text-align:center;min-width:38px}
+    .timer-num{font-size:18px;font-weight:900;line-height:1;display:block}
+    .timer-lbl{font-size:8px;opacity:.8;text-transform:uppercase;letter-spacing:.5px}
+    .timer-sep{color:var(--red);font-size:18px;font-weight:900}
+
+    /* ── CARDS ── */
+    .cards{padding:14px 16px 0;display:flex;flex-direction:column;gap:14px}
+
+    /* FREE */
+    .card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+    .card-free{border:1.5px solid var(--border)}
+    .card-head{padding:18px 18px 14px;display:flex;align-items:flex-start;gap:14px}
+    .plan-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+    .icon-free{background:linear-gradient(135deg,#f0fdf4,#dcfce7)}
+    .icon-basic{background:linear-gradient(135deg,#eff6ff,#dbeafe)}
+    .icon-pro{background:linear-gradient(135deg,#fef3c7,#fde68a)}
+    .plan-info{flex:1}
+    .plan-name{font-size:16px;font-weight:800;color:var(--ink)}
+    .plan-duration{font-size:11px;color:var(--muted);margin-top:2px;font-weight:500}
+    .plan-price{text-align:right;flex-shrink:0}
+    .price-main{font-size:28px;font-weight:900;line-height:1}
+    .price-free{color:var(--green)}
+    .price-basic{color:#2563eb}
+    .price-pro{color:var(--purple)}
+    .price-period{font-size:10px;color:var(--muted);margin-top:2px;font-weight:500}
+    .price-orig{font-size:11px;color:var(--muted);text-decoration:line-through;font-weight:400}
+    .price-off{font-size:11px;font-weight:800;color:#fff;background:var(--red);border-radius:5px;padding:2px 7px;margin-top:3px;display:inline-block;animation:pulseOff 1.5s ease-in-out infinite}
+    @keyframes pulseOff{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+    /* SLOT MINI WARN inside card */
+    .card-slot-warn{margin:0 18px 12px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:9px 12px;display:flex;align-items:center;gap:8px}
+    .card-slot-warn-ico{font-size:15px;flex-shrink:0}
+    .card-slot-warn-txt{font-size:11.5px;color:#991b1b;font-weight:700;line-height:1.4}
+    .card-slot-warn-txt em{color:var(--red);font-style:normal}
+    .slot-mini-bar{height:4px;background:#fee2e2;border-radius:2px;overflow:hidden;margin-top:5px}
+    .slot-mini-fill{height:100%;background:linear-gradient(90deg,var(--green),#fbbf24,var(--red));border-radius:2px}
+
+    .card-feats{padding:0 18px 16px;display:flex;flex-direction:column;gap:7px}
+    .feat{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--ink)}
+    .feat-ic{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px}
+    .feat-ic-yes{background:#dcfce7;color:#16a34a}
+    .feat-ic-no{background:#fee2e2;color:#ef4444}
+    .feat-ic-star{background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff}
+    .feat-ic-blue{background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff}
+    .feat span{line-height:1.4}
+    .feat strong{color:var(--purple)}
+
+    .card-btn{display:block;width:calc(100% - 36px);margin:0 18px 18px;padding:15px;border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;transition:all 0.18s;font-family:inherit;letter-spacing:.2px}
+    .btn-free{background:#f3f4f6;color:#374151;border:1.5px solid var(--border)}
+    .btn-free:hover{background:#e5e7eb}
+    .btn-basic{background:linear-gradient(135deg,#2563eb,#3b82f6);color:#fff;box-shadow:0 4px 16px rgba(37,99,235,.3)}
+    .btn-basic:hover{opacity:.92;transform:translateY(-1px)}
+    .btn-pro{background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.4)}
+    .btn-pro:hover{opacity:.92;transform:translateY(-1px)}
+    .btn-pro:active,.btn-basic:active{transform:scale(.98)}
+
+    /* ribbons */
+    .card-pro{border:2.5px solid var(--purple);position:relative}
+    .pro-ribbon{position:absolute;top:0;right:0;background:linear-gradient(135deg,var(--gold),var(--red));color:#fff;font-size:9.5px;font-weight:900;padding:5px 14px 5px 20px;border-radius:0 17px 0 18px;letter-spacing:.6px;text-transform:uppercase}
+    .card-basic{border:2px solid #3b82f6;position:relative}
+    .basic-ribbon{position:absolute;top:0;right:0;background:linear-gradient(135deg,#2563eb,#60a5fa);color:#fff;font-size:9.5px;font-weight:900;padding:5px 14px 5px 20px;border-radius:0 17px 0 18px;letter-spacing:.6px;text-transform:uppercase}
+
+    /* price inc warning below CTA */
+    .price-inc-note{text-align:center;font-size:11px;color:var(--orange);font-weight:700;margin:-8px 18px 16px;display:flex;align-items:center;justify-content:center;gap:5px}
+
+    /* ── COMPARE TABLE (50+ features) ── */
+    .section{padding:20px 16px 0}
+    .sec-title{font-size:13px;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:.8px;margin-bottom:14px}
+    .cmp{border-radius:18px;overflow:hidden;border:1.5px solid var(--border)}
+    .cmp-cat{background:linear-gradient(135deg,#f5f3ff,#ede9fe);padding:9px 14px;font-size:11px;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:.8px;border-top:1px solid #ddd6fe;border-bottom:1px solid #ddd6fe}
+    .cmp-cat:first-child{border-top:none}
+    .cmp-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:1px solid var(--border)}
+    .cmp-row:last-child{border-bottom:none}
+    .cmp-head{background:var(--ink)}
+    .cmp-cell{padding:10px 8px;font-size:11px;text-align:center;display:flex;align-items:center;justify-content:center;font-weight:500;color:var(--muted)}
+    .cmp-cell:first-child{text-align:left;justify-content:flex-start;padding-left:14px;font-weight:600;color:var(--ink);font-size:12px}
+    .cmp-head .cmp-cell{color:#fff;font-weight:800;font-size:11px}
+    .cmp-head .cmp-cell:first-child{color:rgba(255,255,255,.7)}
+    .cmp-cell-pro{color:var(--purple);font-weight:800}
+    .cmp-cell-basic{color:#2563eb;font-weight:700}
+    .cmp-row:nth-child(even){background:#fafafa}
+    .cmp-yes{color:var(--green);font-size:15px}
+    .cmp-no{color:#d1d5db;font-size:15px}
+    .cmp-val{font-size:10.5px;font-weight:700}
+    .tag-new{display:inline-block;background:rgba(46,213,115,.12);border:1px solid rgba(46,213,115,.3);color:var(--green);font-size:9px;padding:1px 5px;border-radius:4px;margin-left:4px;font-weight:800;vertical-align:middle}
+    .tag-pro{display:inline-block;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);color:var(--purple);font-size:9px;padding:1px 5px;border-radius:4px;margin-left:4px;font-weight:800;vertical-align:middle}
+
+    /* ── RESTORE ── */
+    .restore-box{background:#fff;border-radius:20px;border:1.5px solid var(--border);padding:20px;margin:20px 16px 0}
+    .restore-title{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px}
+    .restore-sub{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+    .restore-input{width:100%;padding:12px 14px;background:#f9fafb;border:1.5px solid var(--border);border-radius:12px;font-size:14px;font-family:inherit;color:var(--ink);outline:none;transition:border-color .18s;margin-bottom:10px}
+    .restore-input:focus{border-color:var(--purple);background:#fff}
+    .restore-input::placeholder{color:#9ca3af}
+    .restore-btn{width:100%;padding:13px;background:var(--purple);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .18s}
+    .restore-btn:hover{background:var(--purple2)}
+    .restore-msg{font-size:12px;margin-top:10px;min-height:16px;text-align:center;font-weight:600}
+
+    /* ── FAQ ── */
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-q{width:100%;background:none;border:none;padding:14px 18px;text-align:left;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-family:inherit}
+    .faq-q::after{content:'›';font-size:20px;color:var(--muted);transition:transform .25s;display:inline-block}
+    .faq-item.open .faq-q::after{transform:rotate(90deg)}
+    .faq-a{display:none;padding:0 18px 14px;font-size:12.5px;color:var(--muted);line-height:1.7}
+    .faq-item.open .faq-a{display:block}
+
+    /* ── BUY SHEET ── */
+    .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;opacity:0;visibility:hidden;transition:all .25s}
+    .sheet-bg.open{opacity:1;visibility:visible}
+    .sheet{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#fff;border-radius:24px 24px 0 0;padding:0 0 40px;transform:translateY(100%);transition:transform .35s cubic-bezier(.34,1.2,.64,1);max-height:95vh;overflow-y:auto}
+    .sheet.open{transform:translateY(0)}
+    .sheet-handle{width:40px;height:4px;background:#e5e7eb;border-radius:4px;margin:12px auto 0}
+    .sheet-head{padding:16px 20px 14px;border-bottom:1px solid var(--border)}
+    .sheet-title{font-size:17px;font-weight:800;color:var(--ink)}
+    .sheet-plan-info{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+    .sheet-plan-name{font-size:13px;color:var(--muted)}
+    .sheet-plan-price{font-size:22px;font-weight:900;color:var(--purple)}
+    .sheet-plan-price small{font-size:11px;color:var(--muted);font-weight:400}
+    .sheet-body{padding:18px 20px}
+    .sheet-slot-warn{background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:11px 14px;margin-bottom:14px;font-size:12px;color:#991b1b;font-weight:700;text-align:center;line-height:1.5}
+    .sheet-slot-warn span{color:var(--red);font-size:14px}
+    .sheet-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+    .sheet-email{width:100%;padding:13px 14px;background:#f9fafb;border:1.5px solid var(--border);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);outline:none;transition:border-color .18s;margin-bottom:6px}
+    .sheet-email:focus{border-color:var(--purple);background:#fff}
+    .sheet-email-note{font-size:11px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+    .sheet-pay-btn{width:100%;padding:16px;background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);color:#fff;border:none;border-radius:16px;font-size:16px;font-weight:900;cursor:pointer;font-family:inherit;box-shadow:0 6px 22px rgba(124,58,237,.4);transition:all .18s;margin-bottom:10px}
+    .sheet-pay-btn:hover{opacity:.92;transform:translateY(-1px)}
+    .sheet-pay-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .sheet-secure{text-align:center;font-size:11px;color:var(--muted)}
+    .sheet-close{position:absolute;top:14px;right:16px;width:30px;height:30px;border-radius:50%;background:#f3f4f6;border:none;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+    /* ── SUCCESS MODAL ── */
+    #successModal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;padding:16px}
+    #successModal.show{display:flex}
+    .success-card{background:#fff;border-radius:24px;width:100%;max-width:360px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:sucIn .4s cubic-bezier(.34,1.3,.64,1) both}
+    @keyframes sucIn{from{opacity:0;transform:scale(.85) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+    .success-banner{background:linear-gradient(135deg,#7c3aed,#ec4899);padding:24px 20px;text-align:center;color:#fff}
+    .success-icon{font-size:52px;margin-bottom:10px;animation:sucBounce .6s cubic-bezier(.34,1.5,.64,1) .2s both}
+    @keyframes sucBounce{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+    .success-title{font-size:22px;font-weight:900;margin-bottom:4px}
+    .success-sub{font-size:13px;opacity:.88}
+    .success-body{padding:20px}
+    .success-field{background:#f9fafb;border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+    .success-field-label{font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px}
+    .success-field-val{font-size:16px;font-weight:900;color:var(--ink);letter-spacing:1px;word-break:break-all}
+    .success-field-copy{float:right;background:var(--purple);color:#fff;border:none;border-radius:8px;padding:3px 10px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
+    .success-warn{background:#fffbeb;border:1.5px solid #fbbf24;border-radius:12px;padding:12px 14px;font-size:12px;color:#92400e;line-height:1.6;margin-bottom:16px}
+    .success-go-btn{width:100%;padding:14px;background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff;border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit}
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="pg-header">
+  <button class="pg-back" onclick="history.back()">←</button>
+  <div>
+    <div class="pg-header-title">Choose Your Plan</div>
+    <div class="pg-header-sub">Unlock full face analysis</div>
+  </div>
+</div>
+
+<!-- ── SCARCITY TOP BAR ── -->
+<div class="scarcity-top">
+  <div class="scarcity-top-txt">🔥 Only <span id="topSlotCount">...</span> slots left at this price — Price goes up soon!</div>
+</div>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-tag"><div class="hero-dot"></div> 99% OFF — Limited Time</div>
+  <div class="hero-title">Unlock <span>Everything</span></div>
+  <div class="hero-sub">Face analysis · Celebrity match · Aura · Personality · 20+ AI traits. Grab before price jumps!</div>
+</div>
+
+<!-- ── MAIN SCARCITY ALERT ── -->
+<div class="scarcity-alert">
+  <div class="scarcity-alert-head">
+    <div class="scarcity-fire">🔥</div>
+    <div class="scarcity-alert-txt">
+      <div class="scarcity-alert-main">Hurry! Price is increasing as slots fill up</div>
+      <div class="scarcity-alert-sub">Each purchase raises the price for next buyer</div>
+    </div>
+    <div class="slots-badge">
+      <div class="slots-badge-lbl">SLOTS</div>
+      <div class="slots-badge-num" id="mainSlotCount">...</div>
+      <div class="slots-badge-lbl">LEFT</div>
+    </div>
+  </div>
+  <div class="scarcity-bar-wrap">
+    <div class="scarcity-bar-label">
+      <span class="taken" id="takenLabel">... taken</span>
+      <span class="left" id="leftLabel">... remaining</span>
+    </div>
+    <div class="scarcity-bar-bg">
+      <div class="scarcity-bar-fill" id="mainSlotBar" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="scarcity-price-warn">⚠️ <span id="priceWarnTxt">Price jumps when slots run out — buy now to lock current price!</span></div>
+</div>
+
+<!-- ── TIMER ── -->
+<div class="timer-bar">
+  <div class="timer-left">
+    <div class="timer-dot"></div>
+    <span class="timer-txt">Offer expires in</span>
+  </div>
+  <div class="timer-count-wrap">
+    <div class="timer-unit"><span class="timer-num" id="tmH">00</span><span class="timer-lbl">hr</span></div>
+    <span class="timer-sep">:</span>
+    <div class="timer-unit"><span class="timer-num" id="tmM">14</span><span class="timer-lbl">min</span></div>
+    <span class="timer-sep">:</span>
+    <div class="timer-unit"><span class="timer-num" id="tmS">59</span><span class="timer-lbl">sec</span></div>
+  </div>
+</div>
+
+<!-- ── PLAN CARDS ── -->
+<div class="cards">
+
+  <!-- FREE -->
+  <div class="card card-free">
+    <div class="card-head">
+      <div class="plan-icon icon-free">🆓</div>
+      <div class="plan-info">
+        <div class="plan-name">Free</div>
+        <div class="plan-duration">Forever free · No expiry</div>
+      </div>
+      <div class="plan-price">
+        <div class="price-main price-free" id="free-sym">₹0</div>
+        <div class="price-period">always free</div>
+      </div>
+    </div>
+    <div class="card-feats">
+      <div class="feat"><div class="feat-ic feat-ic-yes">✓</div><span>1,000 free credits daily</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-yes">✓</div><span>Basic face analysis</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-no">✕</div><span>50% results blurred</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-no">✕</div><span>Ads shown</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-no">✕</div><span>No celebrity match</span></div>
+    </div>
+    <button class="card-btn btn-free" onclick="window.location.href='index.html'">Continue Free →</button>
+  </div>
+
+  <!-- BASIC -->
+  <div class="card card-basic">
+    <div class="basic-ribbon">🚀 Boost</div>
+    <div class="card-head">
+      <div class="plan-icon icon-basic">⚡</div>
+      <div class="plan-info">
+        <div class="plan-name">Basic</div>
+        <div class="plan-duration">3-day credit boost · 5,000 credits</div>
+      </div>
+      <div class="plan-price">
+        <div class="price-main price-basic" id="basic-price-main">...</div>
+        <div class="price-orig" id="basic-price-orig">...</div>
+        <div class="price-off" id="basic-price-off">99% OFF</div>
+      </div>
+    </div>
+    <div class="card-slot-warn">
+      <div class="card-slot-warn-ico">⚠️</div>
+      <div class="card-slot-warn-txt">
+        Only <em id="basicSlotInCard">...</em> slots at this price!<br>Price increases after each purchase.
+        <div class="slot-mini-bar"><div class="slot-mini-fill" id="basicSlotMiniBar" style="width:50%"></div></div>
+      </div>
+    </div>
+    <div class="card-feats">
+      <div class="feat"><div class="feat-ic feat-ic-blue">✓</div><span><strong>5,000 credits</strong> valid for 3 days</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-blue">✓</div><span>More detailed AI analysis</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-blue">✓</div><span>Most results unblurred (80% visible)</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-no">✕</div><span>Ads still shown</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-no">✕</div><span>No celebrity match or PDF</span></div>
+    </div>
+    <button class="card-btn btn-basic" id="basicBtn" onclick="openSheet('basic')">⚡ Get Basic — <span id="basic-btn-price">...</span></button>
+    <div class="price-inc-note">📈 <span id="basicPriceIncNote">Price goes up as slots reduce</span></div>
+  </div>
+
+  <!-- PRO -->
+  <div class="card card-pro">
+    <div class="pro-ribbon">🔥 Best Value</div>
+    <div class="card-head">
+      <div class="plan-icon icon-pro">👑</div>
+      <div class="plan-info">
+        <div class="plan-name">Pro</div>
+        <div class="plan-duration">1 month full access · All features</div>
+      </div>
+      <div class="plan-price">
+        <div class="price-main price-pro" id="pro-price-main">...</div>
+        <div class="price-orig" id="pro-price-orig">...</div>
+        <div class="price-off" id="pro-price-off">99% OFF</div>
+      </div>
+    </div>
+    <div class="card-slot-warn">
+      <div class="card-slot-warn-ico">🔥</div>
+      <div class="card-slot-warn-txt">
+        <em id="proSlotInCard">...</em> Pro slots left at lowest price!
+        <div class="slot-mini-bar"><div class="slot-mini-fill" id="proSlotMiniBar" style="width:50%"></div></div>
+      </div>
+    </div>
+    <div class="card-feats">
+      <div class="feat"><div class="feat-ic feat-ic-star">✓</div><span><strong>Unlimited analyses</strong> — no daily limits</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-star">✓</div><span><strong>Zero blur</strong> — 100% results visible</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-star">✓</div><span><strong>Celebrity match + dark traits</strong></span></div>
+      <div class="feat"><div class="feat-ic feat-ic-star">✓</div><span><strong>PDF download</strong> of your results</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-star">✓</div><span><strong>Zero ads</strong> — clean experience</span></div>
+      <div class="feat"><div class="feat-ic feat-ic-star">✓</div><span><strong>3× leaderboard XP</strong> boost</span></div>
+    </div>
+    <button class="card-btn btn-pro" id="proBtn" onclick="openSheet('pro')">👑 Get Pro — <span id="pro-btn-price">...</span> / month</button>
+    <div class="price-inc-note">📈 <span id="proPriceIncNote">Price rises with each slot taken</span></div>
+  </div>
+
+</div><!-- /cards -->
+
+<!-- ── 50+ COMPARE TABLE ── -->
+<div class="section">
+  <div class="sec-title">📊 Full Feature Comparison (50+ Features)</div>
+  <div class="cmp">
+    <!-- Header -->
+    <div class="cmp-row cmp-head">
+      <div class="cmp-cell">Feature</div>
+      <div class="cmp-cell">Free</div>
+      <div class="cmp-cell cmp-cell-basic">Basic</div>
+      <div class="cmp-cell cmp-cell-pro">Pro 👑</div>
+    </div>
+
+    <!-- ANALYSIS -->
+    <div class="cmp-cat">🔬 Core Analysis</div>
+    <div class="cmp-row"><div class="cmp-cell">Daily Credits</div><div class="cmp-cell"><span class="cmp-val">1K/day</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-basic">5,000</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-pro">∞</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Validity</div><div class="cmp-cell"><span class="cmp-val">Forever</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-basic">3 days</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-pro">30 days</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Results blur</div><div class="cmp-cell"><span class="cmp-val">50%</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-basic">20%</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Age Detection</div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Gender Detection</div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Face Shape Analysis</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Attractiveness Score</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Confidence Score</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Symmetry Analysis</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Facial Landmark Map</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+
+    <!-- PERSONALITY -->
+    <div class="cmp-cat">🧠 Personality & Traits</div>
+    <div class="cmp-row"><div class="cmp-cell">Personality Type</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Aura Color Reading</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Vibe Analysis</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">20+ Trait Breakdown</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Dark Traits Detection <span class="tag-pro">PRO</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Trustworthiness Score</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Intelligence Estimation</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Charisma Index</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Emotional Expression</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Dominant Emotion</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+
+    <!-- CELEB & MATCH -->
+    <div class="cmp-cat">🌟 Celebrity & Comparisons</div>
+    <div class="cmp-row"><div class="cmp-cell">Celebrity Match <span class="tag-pro">PRO</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Match Percentage</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Face Compare Tool</div><div class="cmp-cell"><span class="cmp-val">Limited</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Twin Face Finder</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Historical Era Match</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+
+    <!-- SKIN & BEAUTY -->
+    <div class="cmp-cat">💄 Skin & Beauty</div>
+    <div class="cmp-row"><div class="cmp-cell">Skin Type Detection</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Skin Tone Classification</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Hair Color & Texture</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Eye Color Analysis</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Makeup Suitability <span class="tag-new">NEW</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Facial Hair Detection</div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Glasses Detection</div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+
+    <!-- ASTRO & FUN -->
+    <div class="cmp-cat">🔮 Astro & Fun Features</div>
+    <div class="cmp-row"><div class="cmp-cell">Zodiac Prediction</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Past Life Reading <span class="tag-new">NEW</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Spirit Animal <span class="tag-new">NEW</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Villain Archetype</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Fictional Character Match</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Fortune Reading</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+
+    <!-- EXPORT & PROFILE -->
+    <div class="cmp-cat">📁 Export & Profile</div>
+    <div class="cmp-row"><div class="cmp-cell">PDF Report Download <span class="tag-pro">PRO</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Result Screenshot Export</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Analysis History</div><div class="cmp-cell"><span class="cmp-val">Last 3</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-basic">Last 10</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-pro">Unlimited</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Cloud Sync (Multi-device)</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Profile Card</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+
+    <!-- LEADERBOARD & SOCIAL -->
+    <div class="cmp-cat">🏆 Leaderboard & Social</div>
+    <div class="cmp-row"><div class="cmp-cell">Leaderboard Access</div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">XP Multiplier</div><div class="cmp-cell"><span class="cmp-val">1×</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-basic">1.5×</span></div><div class="cmp-cell"><span class="cmp-val cmp-cell-pro">3×</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Pro Badge on Leaderboard</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Priority in Rankings</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+
+    <!-- UX & EXPERIENCE -->
+    <div class="cmp-cat">✨ Experience</div>
+    <div class="cmp-row"><div class="cmp-cell">Ad-free</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Faster Processing</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Priority Support</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Early Feature Access <span class="tag-new">NEW</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Works All Devices</div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Dark Mode</div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+    <div class="cmp-row"><div class="cmp-cell">Restore on New Device</div><div class="cmp-cell"><span class="cmp-no">✕</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div><div class="cmp-cell"><span class="cmp-yes">✓</span></div></div>
+  </div>
+</div>
+
+<!-- ── RESTORE SECTION ── -->
+<div class="section">
+  <div class="sec-title">🔄 Restore Your Plan</div>
+  <div class="restore-box">
+    <div class="restore-title">Already purchased?</div>
+    <div class="restore-sub">Enter your email and secret code to restore your plan on this device. Your secret code was shown on the success screen after purchase.</div>
+    <input class="restore-input" id="restoreEmail" type="email" placeholder="Your email address" autocomplete="email">
+    <input class="restore-input" id="restoreCode"  type="text"  placeholder="Secret Code (e.g. ABC12DEF)" autocomplete="off" style="text-transform:uppercase">
+    <button class="restore-btn" id="restoreBtn" onclick="doRestore()">🔄 Restore My Plan</button>
+    <div class="restore-msg" id="restoreMsg"></div>
+  </div>
+</div>
+
+<!-- ── FAQ ── -->
+<div class="section" style="margin-bottom:20px">
+  <div class="sec-title">❓ FAQ</div>
+  <div class="card" style="padding:0">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFaq(this)">Why does the price change?</button>
+      <div class="faq-a">Our pricing is slot-based — as more people buy, the price for remaining slots goes up. This means early buyers get the best deal. Once all slots are taken, the price resets next day at a new level. Buy now to lock the lowest available price!</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What happens when my plan expires?</button>
+      <div class="faq-a">When your Basic (3-day) or Pro (30-day) plan expires, all premium features are automatically removed and your account returns to Free. Your analysis history stays saved. You can purchase again anytime.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do I use it on another phone?</button>
+      <div class="faq-a">After purchase, save your secret code. Then on any device, go to Pricing → Restore My Plan → enter your email + secret code. Your plan activates instantly on the new device.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is payment secure?</button>
+      <div class="faq-a">Yes. All payments are processed via Razorpay — India's most trusted payment gateway. We never store your card details. UPI, Cards, Net Banking and Wallets all supported.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">I forgot my secret code — what to do?</button>
+      <div class="faq-a">The secret code is shown only once after purchase. If lost, email yash92726@gmail.com with your purchase email and payment ID for manual recovery.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Basic plan — do credits expire?</button>
+      <div class="faq-a">Yes. The 5,000 credits from Basic expire after 3 days with the plan. Use them all within 3 days for maximum value. Pro has unlimited credits for 30 days.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── BUY SHEET ── -->
+<div class="sheet-bg" id="sheetBg" onclick="closeSheet()"></div>
+<div class="sheet" id="buySheet">
+  <div class="sheet-handle"></div>
+  <button class="sheet-close" onclick="closeSheet()">✕</button>
+  <div class="sheet-head">
+    <div class="sheet-title" id="sheetTitle">Get Pro Plan</div>
+    <div class="sheet-plan-info">
+      <div class="sheet-plan-name" id="sheetPlanDesc">1 month · All features</div>
+      <div class="sheet-plan-price" id="sheetPlanPrice">...</div>
+    </div>
+  </div>
+  <div class="sheet-body">
+    <div class="sheet-slot-warn">
+      ⚠️ Only <span id="sheetSlotCount">...</span> slots at this price!<br>
+      <span style="font-weight:400;color:#b91c1c;font-size:11px">Price goes up after each purchase — buy now to save!</span>
+    </div>
+    <div class="sheet-label">Your Email</div>
+    <input class="sheet-email" id="sheetEmail" type="email" placeholder="you@example.com" autocomplete="email">
+    <div class="sheet-email-note">📧 Your plan is linked to this email. You'll get a <strong>secret code</strong> after payment — save it to restore your plan on any device.</div>
+    <button class="sheet-pay-btn" id="sheetPayBtn" onclick="doPayment()">🔒 Pay Securely via Razorpay</button>
+    <div class="sheet-secure">🔒 Secured by Razorpay · UPI · Cards · Net Banking · Wallets</div>
+  </div>
+</div>
+
+<!-- ── SUCCESS MODAL ── -->
+<div id="successModal">
+  <div class="success-card">
+    <div class="success-banner">
+      <div class="success-icon" id="sucIcon">🎉</div>
+      <div class="success-title" id="sucTitle">Payment Successful!</div>
+      <div class="success-sub" id="sucSub">Your plan is now active</div>
+    </div>
+    <div class="success-body">
+      <div class="success-field">
+        <div class="success-field-label">🔑 Your Secret Code <button class="success-field-copy" onclick="copyFieldText('sucCode',this)">Copy</button></div>
+        <div class="success-field-val" id="sucCode">—</div>
+      </div>
+      <div class="success-field">
+        <div class="success-field-label">🔗 Your Access URL <button class="success-field-copy" onclick="copyFieldText('sucUrl',this)">Copy</button></div>
+        <div class="success-field-val" style="font-size:11px;letter-spacing:0;font-weight:600;color:#6b7280;word-break:break-all" id="sucUrl">—</div>
+      </div>
+      <div class="success-warn">
+        ⚠️ <strong>Save your secret code now!</strong> It's shown only once. You'll need your email + this code to restore your plan on another device.
+      </div>
+      <button class="success-go-btn" onclick="goHome()">🚀 Start Using Now!</button>
+    </div>
+  </div>
+</div>
+
+<script src="plan-system.js"></script>
+<script>
+(function() {
+  'use strict';
+  var currentPlan = 'pro';
+  var country     = 'IN';
+  var TOTAL       = 20; // display max slots
+
+  /* ── Init ── */
+  function init() {
+    country = window.PSDetectCtry ? window.PSDetectCtry() : detectTzCountry();
+    updatePriceDisplay();
+    updateSlotUI();
+    startTimer();
+
+    // Auto-refresh price every 60s (simulate live)
+    setInterval(updatePriceDisplay, 60000);
+  }
+
+  function detectTzCountry() {
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      if (tz.indexOf('Kolkata')>-1||tz.indexOf('Chennai')>-1||tz.indexOf('Mumbai')>-1) return 'IN';
+    } catch(e) {}
+    return 'DEF';
+  }
+
+  /* ── Price display ── */
+  function updatePriceDisplay() {
+    var bp = window.PSGetPrice ? window.PSGetPrice('basic', country) : null;
+    var pp = window.PSGetPrice ? window.PSGetPrice('pro',   country) : null;
+    if (!bp || !pp) return;
+
+    setTxt('basic-price-main', bp.sym + bp.sale);
+    setTxt('basic-price-orig', bp.sym + bp.orig);
+    setTxt('basic-price-off',  bp.off);
+    setTxt('basic-btn-price',  bp.sym + bp.sale);
+    setTxt('pro-price-main',   pp.sym + pp.sale);
+    setTxt('pro-price-orig',   pp.sym + pp.orig);
+    setTxt('pro-price-off',    pp.off);
+    setTxt('pro-btn-price',    pp.sym + pp.sale);
+  }
+
+  /* ── Slot UI ── */
+  function updateSlotUI() {
+    var s = window.PSGetSlots ? window.PSGetSlots() : 12;
+    var taken = TOTAL - s;
+    var pct   = Math.min(95, Math.round((taken / TOTAL) * 100));
+
+    setTxt('topSlotCount',  s);
+    setTxt('mainSlotCount', s);
+    setTxt('takenLabel',    taken + ' taken');
+    setTxt('leftLabel',     s + ' remaining');
+    setTxt('basicSlotInCard', s);
+    setTxt('proSlotInCard',   s);
+    setTxt('sheetSlotCount',  s);
+
+    var bar = document.getElementById('mainSlotBar');
+    if (bar) bar.style.width = pct + '%';
+
+    var basicMini = document.getElementById('basicSlotMiniBar');
+    if (basicMini) basicMini.style.width = pct + '%';
+    var proMini = document.getElementById('proSlotMiniBar');
+    if (proMini) proMini.style.width = pct + '%';
+
+    // Dynamic price inc note
+    var nextPrice = getNextPriceTier(s);
+    if (nextPrice) {
+      setTxt('basicPriceIncNote', 'Price jumps to ' + nextPrice.basic + ' when ' + nextPrice.at + ' slots left!');
+      setTxt('proPriceIncNote',   'Pro price jumps to ' + nextPrice.pro + ' at ' + nextPrice.at + ' slots!');
+      setTxt('priceWarnTxt', '⚡ Current price valid for ' + s + ' more purchases only!');
+    }
+  }
+
+  function getNextPriceTier(slots) {
+    if (country === 'IN') {
+      if (slots > 15) return { basic:'₹35', pro:'₹299', at:15 };
+      if (slots > 10) return { basic:'₹49', pro:'₹349', at:10 };
+      if (slots > 5)  return { basic:'₹59', pro:'₹379', at:5 };
+      if (slots > 3)  return { basic:'₹70', pro:'₹400', at:3 };
+    }
+    return null;
+  }
+
+  /* ── Timer ── */
+  function startTimer() {
+    var KEY  = 'ps_timer_exp';
+    var exp  = parseInt(localStorage.getItem(KEY) || '0');
+    var now  = Date.now();
+    if (!exp || exp < now) {
+      // New timer: random 12–23 min
+      exp = now + (12 + Math.floor(Math.random() * 12)) * 60 * 1000;
+      localStorage.setItem(KEY, String(exp));
+    }
+
+    function tick() {
+      var rem = Math.max(0, Math.floor((exp - Date.now()) / 1000));
+      if (rem === 0) {
+        // Reset timer
+        exp = Date.now() + (12 + Math.floor(Math.random() * 12)) * 60 * 1000;
+        localStorage.setItem(KEY, String(exp));
+        rem = Math.floor((exp - Date.now()) / 1000);
+      }
+      var h = Math.floor(rem / 3600);
+      var m = Math.floor((rem % 3600) / 60);
+      var s = rem % 60;
+      setTxt('tmH', pad(h));
+      setTxt('tmM', pad(m));
+      setTxt('tmS', pad(s));
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function setTxt(id, val) { var e=document.getElementById(id); if(e) e.textContent=val; }
+
+  /* ── Sheet ── */
+  window.openSheet = function(planType) {
+    currentPlan = planType;
+    var bp = window.PSGetPrice ? window.PSGetPrice('basic', country) : null;
+    var pp = window.PSGetPrice ? window.PSGetPrice('pro',   country) : null;
+    var isBasic = (planType === 'basic');
+    var p = isBasic ? bp : pp;
+
+    setTxt('sheetTitle',    isBasic ? '⚡ Get Basic Plan' : '👑 Get Pro Plan');
+    setTxt('sheetPlanDesc', isBasic ? '3 days · 5,000 credits' : '30 days · All features · Zero ads');
+    if (p) {
+      var priceEl = document.getElementById('sheetPlanPrice');
+      if (priceEl) priceEl.innerHTML = p.sym + p.sale + (isBasic ? '' : ' <small>/ month</small>');
+    }
+
+    document.getElementById('sheetBg').classList.add('open');
+    document.getElementById('buySheet').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ document.getElementById('sheetEmail').focus(); }, 350);
+  };
+
+  window.closeSheet = function() {
+    document.getElementById('sheetBg').classList.remove('open');
+    document.getElementById('buySheet').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  /* ── Payment ── */
+  window.doPayment = function() {
+    var emailEl = document.getElementById('sheetEmail');
+    var email   = emailEl ? emailEl.value.trim() : '';
+    if (!email || email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+      if (emailEl) { emailEl.style.borderColor='#ef4444'; emailEl.placeholder='Please enter a valid email!'; emailEl.focus(); }
+      return;
+    }
+    if (emailEl) emailEl.style.borderColor = '';
+    var btn = document.getElementById('sheetPayBtn');
+    if (btn) { btn.textContent = '⏳ Opening payment...'; btn.disabled = true; }
+    closeSheet();
+    setTimeout(function() {
+      if (btn) { btn.textContent = '🔒 Pay Securely via Razorpay'; btn.disabled = false; }
+      if (window.PSBuyPlan) window.PSBuyPlan(currentPlan, country, email);
+      else alert('Payment system not loaded. Please refresh and try again.');
+    }, 300);
+  };
+
+  /* ── Success callback ── */
+  window.PSShowSuccess = function(data) {
+    var isBasic = (data.plan === 'basic');
+    setTxt('sucIcon',  isBasic ? '⚡' : '🎉');
+    setTxt('sucTitle', 'Payment Successful!');
+    setTxt('sucSub',   (isBasic ? 'Basic 3-day plan active' : 'Pro plan active for 30 days') +
+           ' · Expires ' + new Date(data.expiresAt).toLocaleDateString());
+    setTxt('sucCode', data.secretCode);
+    var url = window.location.origin + '/?uid=' + data.urlToken;
+    setTxt('sucUrl', url);
+    document.getElementById('successModal').classList.add('show');
+  };
+
+  window.copyFieldText = function(id, btn) {
+    var el = document.getElementById(id);
+    if (!el || !navigator.clipboard) return;
+    navigator.clipboard.writeText(el.textContent).then(function() {
+      var orig = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(function(){ btn.textContent = orig; }, 1500);
+    });
+  };
+
+  window.goHome = function() {
+    var token = localStorage.getItem('ps_token') || '';
+    window.location.href = 'index.html' + (token ? '?uid=' + token : '');
+  };
+
+  /* ── Restore ── */
+  window.doRestore = async function() {
+    var email = (document.getElementById('restoreEmail')||{}).value||'';
+    var code  = ((document.getElementById('restoreCode')||{}).value||'').toUpperCase();
+    var msgEl = document.getElementById('restoreMsg');
+    var btn   = document.getElementById('restoreBtn');
+    if (msgEl) { msgEl.textContent=''; msgEl.style.color=''; }
+    if (!window.PSRestorePlan) { if(msgEl){msgEl.textContent='System not loaded. Refresh.';msgEl.style.color='#ef4444';} return; }
+    if (btn) { btn.textContent='⏳ Checking...'; btn.disabled=true; }
+    try {
+      var res = await window.PSRestorePlan(email.trim(), code.trim());
+      if (btn) { btn.textContent='🔄 Restore My Plan'; btn.disabled=false; }
+      if (msgEl) { msgEl.textContent=res.msg; msgEl.style.color=res.ok?'#16a34a':'#ef4444'; }
+      if (res.ok) setTimeout(function(){ window.goHome(); }, 1500);
+    } catch(e) {
+      if (btn) { btn.textContent='🔄 Restore My Plan'; btn.disabled=false; }
+      if (msgEl) { msgEl.textContent='Error. Please try again.'; msgEl.style.color='#ef4444'; }
+    }
+  };
+
+  /* ── FAQ ── */
+  window.toggleFaq = function(btn) {
+    var item = btn.parentElement;
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  };
+
+  /* ── Auto uppercase restore code ── */
+  var codeInput = document.getElementById('restoreCode');
+  if (codeInput) {
+    codeInput.addEventListener('input', function() {
+      var pos = this.selectionStart;
+      this.value = this.value.toUpperCase();
+      try { this.setSelectionRange(pos, pos); } catch(e){}
+    });
+  }
+
+  // Wait for plan-system.js to be ready before init
+  if (window.PSGetPrice) {
+    init();
+  } else {
+    // plan-system.js loads synchronously above, but just in case
+    var _initWait = setInterval(function() {
+      if (window.PSGetPrice) {
+        clearInterval(_initWait);
+        init();
+      }
+    }, 50);
+    setTimeout(function() { clearInterval(_initWait); init(); }, 1000);
+  }
+})();
+</script>
+</body>
+</html>
