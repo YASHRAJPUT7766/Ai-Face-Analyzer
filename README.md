@@ -4,7 +4,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Face%20AI%20Analyzer&fontSize=60&fontColor=fff&animation=twinkling&fontAlignY=35&desc=The%20%231%20Free%20AI%20Face%20Analysis%20PWA&descAlignY=60&descSize=18" width="100%"/>
 
 <!-- Live Badge -->
-<a href="https://aifaceanalyzer.netlify.app" target="_blank">
+<a href="https://aifaceanalyzer.netlify.app/assets/favicon.ico" target="_blank">
   <img src="https://img.shields.io/badge/🌐%20LIVE%20DEMO-aifaceanalyzer.netlify.app-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Live Demo"/>
 </a>
 
